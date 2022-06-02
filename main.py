@@ -1,16 +1,13 @@
+#!/bin/env python3
 import gym
 env = gym.make("LunarLander-v2")
-observation, info = env.reset(seed=41, return_info=True)
+observation, info = env.reset(return_info=True)
 
-k = 0
+for i in range(1000):
+    env.render()
+    # action = policy(observation)
+    # observation, reward, done, info = env=step(action)
 
-for b in range(4):
-    print(b)
-    for i in range(10):
-        env.render()
-        # action = policy(observation)
-        # observation, reward, done, info = env=step(action)
-
-        # if done:
-        #     observation, info = env.reset(return_info=True)
-        env.step(b)
+    # if done:
+    #     observation, info = env.reset(return_info=True)
+    env.step(0)
