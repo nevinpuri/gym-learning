@@ -1,15 +1,14 @@
-#!/bin/env python3
+#!/usr/bin/python3.10
+
 import gym
-from stable_baselines3 import a2c
 env = gym.make("LunarLander-v2")
-observation, info = env.reset(return_info=True)
+observation, info = env.reset(seed=42, return_info=True)
 
-for i in range(1000):
+for _ in range(1000):
     env.render()
-    # action = policy(observation)
-    # observation, reward, done, info = env=step(action)
+    observation, reward, done, info = env.step(1)
 
-    # if done:
-    #     observation, info = env.reset(return_info=True)
-    obs, reward, done, info = env.step(0)
-    print(info)
+    if done:
+        observation, info = env.reset(return_info=True)
+
+env.close()
